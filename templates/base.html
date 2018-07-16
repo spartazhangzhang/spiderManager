@@ -7,34 +7,59 @@
           Spider Man!!
         </title>
         <link rel="stylesheet" href="../static/css/semantic.css">
+        <link rel="stylesheet" href="../static/css/dropdown.css">
+        <link rel="stylesheet" href="../static/css/transition.min.css">
         <script src="../static/js/jquery.min.js"></script>
         <script src="../static/js/semantic.js"></script>
         <script src="../static/js/exporting.js"></script>
         <script src="../static/js/highcharts.js"></script>
         <script src="../static/js/highcharts-more.js"></script>
-        <script src="../static/js/dropdown.js"></script>
+        <script src="../static/js/dropdown.min.js"></script>
+        <script src="../static/js/transition.js"></script>
     </head>
     <body>
     <div class="ui container" style="margin-top: 3em;">
         <div class="ui inverted menu">
-          <div class="header item">Brand</div>
-          <div class="active item">Link</div>
-          <a class="item">Link</a>
-          <div class="ui dropdown item" tabindex="0">
-            Dropdown
+          <div class="header item">SPIDER</div>
+           <div class="ui dropdown item" tabindex="0">
+            账号管理
             <i class="dropdown icon"></i>
-            <div class="menu transition hidden" tabindex="-1">
-              <div class="item">Action</div>
-              <div class="item">Another Action</div>
-              <div class="item">Something else here</div>
-              <div class="divider"></div>
-              <div class="item">Separated Link</div>
-              <div class="divider"></div>
-              <div class="item">One more separated link</div>
+            <div class="menu transition hidden" id ='navbar' tabindex="-1">
+              <div class="item"><a href="{% url 'accounts:create' %}">新建账号</a></div>
+                <div class="divider"></div>
+              <div class="item"><a href="{% url 'accounts:update' %}">修改账号</a></div>
+                <div class="divider"></div>
+              <div class="item"><a href="{% url 'accounts:delete' %}">删除账号</a></div>
+            </div>
+         
+          </div>
+            <div class="ui dropdown item" tabindex="0">
+            IP管理
+            <i class="dropdown icon"></i>
+            <div class="menu transition hidden" id ='navbar' tabindex="-1">
+              <div class="item"><a href="{% url 'accounts:create' %}">新建账号</a></div>
+                <div class="divider"></div>
+              <div class="item"><a href="{% url 'accounts:update' %}">修改账号</a></div>
+                <div class="divider"></div>
+              <div class="item"><a href="{% url 'accounts:delete' %}">删除账号</a></div>
             </div>
           </div>
+
+            <div class="ui dropdown item" tabindex="0">
+            数据量管理
+            <i class="dropdown icon"></i>
+            <div class="menu transition hidden" id ='navbar' tabindex="-1">
+              <div class="item"><a href="{% url 'accounts:create' %}">新建账号</a></div>
+                <div class="divider"></div>
+              <div class="item"><a href="{% url 'accounts:update' %}">修改账号</a></div>
+                <div class="divider"></div>
+              <div class="item"><a href="{% url 'accounts:delete' %}">删除账号</a></div>
+            </div>
+
+          </div>
+
           <div class="right menu">
-            <div class="item">
+           <div class="item">
               <div class="ui transparent inverted icon input">
                 <i class="search icon"></i>
                 <input type="text" placeholder="Search">
@@ -50,5 +75,6 @@
 </div>
 </body>
 {% block foot %}
+
 {% endblock %}
 </html>

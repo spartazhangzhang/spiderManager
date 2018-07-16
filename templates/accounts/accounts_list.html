@@ -3,42 +3,21 @@
 {% block content %}
     <table class="ui padded celled right aligned table">
           <thead>
-            <tr><th class="left aligned">Person</th>
-            <th>Calories</th>
-            <th>Fat</th>
-            <th>Protein</th>
+            <tr>
+                <th class="left aligned">账号</th>
+                <th>密码</th>
+                <th>状态</th>
+                <th>网站</th>
           </tr></thead>
           <tbody>
+          {% for obj in objs %}
             <tr>
-              <td class="left aligned">Lianne</td>
-              <td>23</td>
-              <td>32g</td>
-              <td>43g</td>
+              <td class="left aligned">{{ obj.phone }}</td>
+              <td>{{ obj.password }}</td>
+              <td>{{ obj.status }}</td>
+              <td>{{ obj.website }}</td>
             </tr>
-            <tr>
-              <td class="left aligned">Joette</td>
-              <td>21</td>
-              <td>13g</td>
-              <td>31g</td>
-            </tr>
-            <tr>
-              <td class="left aligned">Le</td>
-              <td>28</td>
-              <td>39g</td>
-              <td>23g</td>
-            </tr>
-            <tr>
-              <td class="left aligned">Sacha</td>
-              <td>46</td>
-              <td>43g</td>
-              <td>13g</td>
-            </tr>
-            <tr>
-              <td class="left aligned">Bruna</td>
-              <td>9</td>
-              <td>47g</td>
-              <td>12g</td>
-            </tr>
+          {% endfor %}
           </tbody>
         </table>
 {% endblock %}
