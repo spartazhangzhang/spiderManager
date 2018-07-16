@@ -135,16 +135,3 @@ CELERY_IMPORTS = ('utils.celery_tasks')
 CELERY_TIMEZONE = 'Asia/Shanghai'
 CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
 
-
-CELERYBEAT_SCHEDULE = {    #定时器策略
-    #定时任务一：　每隔30s运行一次
-    '测试定时器1': {
-        "task": "utils.celery_tasks.",
-        #"schedule": crontab(minute='*/2'),  # or 'schedule':   timedelta(seconds=3),
-        "schedule":timedelta(seconds=30),
-        "args": (),
-    },
-}
-#############################
-# celery 配置信息 end
-#############################
