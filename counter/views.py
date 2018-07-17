@@ -15,5 +15,7 @@ def get_data(request):
 def data_handler(request):
     data_number = request.GET.get('number')
     date = datetime.date.today()
-    Counter.objects.create(timestamp=date,number=data_number)
+    print(date)
+    print(data_number)
+    Counter.objects.create(timestamp=date,number=data_number).save()
     return JsonResponse({'status':'success'})
