@@ -1,4 +1,150 @@
 {% extends 'base.html' %}
-{% block content %}
 
+{% block head %}
+      <style id="e1806987-14ac-472b-b58f-40da07bc3148">
+    .pb-toast-main {
+      z-index: 2147483639 !important;
+      position: fixed !important;
+      top: -50px !important;
+      left: 0px !important;
+      width: 100% !important;
+      height: 44px !important;
+      border: none !important;
+      box-shadow: 0 1px 0 0 #b6b4b6 !important;
+      transition: top 0.3s;
+    }
+
+    .pb-toast-main-move {
+      top: 0px !important;
+    }
+
+    .pb-toast-main-show {
+      transition: none;
+      top: 0px !important;
+    }
+    #pb_jq_tipsWrapper {
+      position: fixed !important;
+      width: 230px !important;
+      background-color: rgba(0, 0, 0, 0.8);
+      box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.2);
+      font-family: "Lucida Grande", tahoma, verdana, arial, sans-serif !important;
+      border-radius: 5px !important;
+      color: #ffffff !important;
+      z-index: 2147483641 !important;
+      padding: 15px !important;
+      font-size: 14px !important;
+    }
+
+    #pb_jq_tipsWrapper:before {
+      position: absolute !important;
+      top: -10px !important;
+      right: 60px !important;
+      display: inline-block !important;
+      border-right: 10px solid transparent !important;
+      border-bottom: 10px solid #000 !important;
+      border-left: 10px solid transparent !important;
+      border-bottom-color: rgba(0, 0, 0, 0.2) !important;
+      content: '' !important;
+    }
+
+    #pb_jq_tipsWrapper:after {
+      position: absolute !important;
+      top: -9px !important;
+      right: 60px !important;
+      display: inline-block !important;
+      border-right: 9px solid transparent !important;
+      border-bottom: 9px solid #000 !important;
+      border-left: 9px solid transparent !important;
+      content: '' !important;
+    }
+
+    #pb-link-copied-message {
+      display: none;
+      position: fixed;
+      width: 90px;
+      height: 29px;
+      opacity: 0;
+      border-radius: 100px;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: 2147483641;
+      font-family: "Lucida Grande", tahoma, verdana, arial, sans-serif !important;
+      font-size: 13px;
+      line-height: 29px;
+      text-align: center;
+      color: #ffffff;
+    }
+    .echarts{
+      padding: 20px;
+      width: 100%;
+      height: 400px;
+    }
+  </style>
+{% endblock %}
+{% block content %}
+<div class="echarts" id="echarts"></div>
+{% endblock %}
+{% block foot %}
+     <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+  <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+  <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+  <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+  <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+  <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+  <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>
+  <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+  <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+  <script type="text/javascript">
+
+    var dom = document.getElementById("echarts");
+    var myChart = echarts.init(dom);
+    var app = {};
+    option = null;
+
+    data=[["2000-06-05",116],["2000-06-06",129],["2000-06-07",135],["2000-06-08",86],["2000-06-09",73],["2000-06-10",85],["2000-06-11",73],["2000-06-12",68],["2000-06-13",92],["2000-06-14",130],["2000-06-15",245],["2000-06-16",139],["2000-06-17",115],["2000-06-18",111],["2000-06-19",309],["2000-06-20",206],["2000-06-21",137],["2000-06-22",128],["2000-06-23",85],["2000-06-24",94],["2000-06-25",71],["2000-06-26",106],["2000-06-27",84],["2000-06-28",93],["2000-06-29",85],["2000-06-30",73],["2000-07-01",83],["2000-07-02",125],["2000-07-03",107],["2000-07-04",82],["2000-07-05",44],["2000-07-06",72],["2000-07-07",106],["2000-07-08",107],["2000-07-09",66],["2000-07-10",91],["2000-07-11",92],["2000-07-12",113],["2000-07-13",107],["2000-07-14",131],["2000-07-15",111],["2000-07-16",64],["2000-07-17",69],["2000-07-18",88],["2000-07-19",77],["2000-07-20",83],["2000-07-21",111],["2000-07-22",57],["2000-07-23",55],["2000-07-24",60]];
+
+    var dateList = data.map(function (item) {
+        return item[0];
+    });
+    var valueList = data.map(function (item) {
+        return item[1];
+    });
+       //console.log(dateList,valueList)
+    option = {
+
+        // Make gradient line here
+        visualMap: [{
+            show: false,
+            type: 'continuous',
+            seriesIndex: 0,
+            min: 0,
+            max: 400
+        }],
+
+        title: [{
+            left: 'center',
+            text: '图表名'
+        }],
+        tooltip: {
+            trigger: 'axis'
+        },
+        xAxis: [{
+            data: dateList
+        }],
+        yAxis: [{
+            splitLine: {show: false}
+        }],
+        grid: [{
+            bottom: '10%'
+        }],
+        series: [{
+            type: 'line',
+            showSymbol: false,
+            data: valueList
+        }]
+    };;
+    if (option && typeof option === "object") {
+        myChart.setOption(option, true);
+    }
+
+   </script>
 {% endblock %}

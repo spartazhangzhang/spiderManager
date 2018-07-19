@@ -2,6 +2,8 @@ import datetime
 
 from django.core import serializers
 from django.http import HttpResponse, JsonResponse
+from django.shortcuts import render
+
 from counter.models import Counter
 
 # 获取当天的数据.
@@ -9,7 +11,8 @@ def get_data(request):
     date = datetime.date.today()
     data = Counter.objects.filter(timestamp=date)
     json_data = serializers.serialize("json", data)
-    return HttpResponse(json_data, content_type="application/json")
+
+    return render(request,'counter/today.html')
 
 # 保存数据到数据库
 def data_handler(request):

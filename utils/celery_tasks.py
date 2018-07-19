@@ -12,3 +12,6 @@ def check_counter():
     num = col.find().count()
     requests.get('http://localhost:8000/counter/data_handler?number={}'.format(num))
 
+@task
+def qcc_mongo():
+    pass
