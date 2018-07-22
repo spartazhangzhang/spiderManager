@@ -15,3 +15,7 @@ def check_counter():
 @task
 def qcc_mongo():
     pass
+
+@task
+def add(x,y):
+	return x+y

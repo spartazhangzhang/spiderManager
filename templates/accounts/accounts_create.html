@@ -15,8 +15,19 @@
 
         <div class="field">
         <label>website</label>
-        <input type="text" name="website" placeholder="所属网站">
+        <div class="grouped fields">
+            {% for web in webs %}
+            <div class="field">
+              <div class="ui radio checkbox">
+                <input type="radio" name="website" tabindex="0" value="{{ web.id }}" class="hidden">
+                <label>{{ web.name }}</label>
+              </div>
+            </div>
+            {% endfor %}
       </div>
+      </div>
+
+
 
     <button class="ui button" type="submit">提交</button>
 </form>

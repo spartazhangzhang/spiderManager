@@ -1,7 +1,7 @@
 from django.core import serializers
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import JsonResponse, HttpResponse
-from accounts.models import Acounts
+from accounts.models import Acounts,Website
 import json
 def index(request):
     return render(request,'accounts/index.html')
@@ -18,11 +18,11 @@ def create(request):
         phone = request.POST.get('phone')
         password = request.POST.get('password')
         website = request.POST.get('website')
-        counter = Acounts.objects.get(website__contains=website)
         account = Acounts.objects.create(phone=phone,password=password,website=website)
         return redirect("accounts:list")
-
-    return render(request,'accounts/accounts_create.html')
+    websites = Website.objects.all()
+    context = {'webs': websites}
+    return render(request,'accounts/accounts_create.html',context=context)
 
     # 更新账号
 def update(request):
